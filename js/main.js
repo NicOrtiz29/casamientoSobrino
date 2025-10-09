@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURACIÓN (Puedes cambiar esto) ---
-    const weddingDate = new Date(2026, 1, 14, 18, 0, 0); // Formato: AÑO, MES (0-11), DÍA, HORA, MINUTO, SEGUNDO
+    const weddingDate = new Date(2025, 11, 20, 14, 0, 0); // Formato: AÑO, MES (0-11), DÍA, HORA, MINUTO, SEGUNDO
     
     const eventDetails = {
-        title: "Boda de Jazmín & Marcos",
+        title: "Boda de Mile & Marian",
         description: "¡Te esperamos para celebrar nuestra boda!",
         location: "Teatro Colón, Cerrito 628, Buenos Aires",
         startTime: weddingDate,
@@ -100,53 +100,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicOnIcon = document.getElementById('music-on-icon');
     const musicOffIcon = document.getElementById('music-off-icon');
 
-    // Function to show the modal with a fade-in/scale-up effect
-    const showModal = () => {
-        if (musicModal && modalContent) {
-            musicModal.classList.remove('opacity-0', 'pointer-events-none');
-            // A small delay to allow the display property to change before starting the transition
-            setTimeout(() => {
-                modalContent.classList.remove('scale-95', 'opacity-0');
-            }, 50);
-        }
-    };
+    // Mostrar modal al cargar
+    setTimeout(() => {
+      musicModal.classList.remove('opacity-0', 'pointer-events-none');
+      modalContent.classList.add('modal-enter');
+      modalContent.classList.remove('opacity-0', 'scale-95');
+      // focus para accesibilidad
+      modalContent.focus();
+    }, 300);
 
-    // Function to hide the modal
     const closeModal = () => {
-        if (musicModal && modalContent) {
-            modalContent.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => {
-                musicModal.classList.add('opacity-0', 'pointer-events-none');
-            }, 300); // Match duration in CSS
-        }
+      modalContent.classList.remove('modal-enter');
+      modalContent.classList.add('modal-exit');
+      setTimeout(() => {
+        musicModal.classList.add('opacity-0', 'pointer-events-none');
+        // limpiar estado de exit
+        modalContent.classList.remove('modal-exit');
+      }, 400);
     };
 
-    if (musicModal) {
-        // Show the modal when the page is loaded
-        showModal();
-
-        playMusicBtn.addEventListener('click', () => {
-            music.play().catch(e => console.error("Error playing music:", e));
-            closeModal();
-            musicControl.classList.remove('hidden');
-            setTimeout(() => musicControl.classList.remove('opacity-0'), 50); // Fade in control
-            musicOnIcon.classList.remove('hidden');
-            musicOffIcon.classList.add('hidden');
-        });
-
-        noMusicBtn.addEventListener('click', () => {
-            closeModal();
-        });
-
-        musicToggle.addEventListener('click', () => {
-            if (music.paused) {
-                music.play();
-                musicOnIcon.classList.remove('hidden');
-                musicOffIcon.classList.add('hidden');
-            } else {
-                music.pause();
-                musicOnIcon.classList.add('hidden');
-                musicOffIcon.classList.remove('hidden');
-            }
-        });
+    // Reproducir con música
+    if (playMusicBtn) {
+      playMusicBtn.addEventListener('click', () => {
+        music.play().catch(() => console.warn('El navegador bloqueó la reproducción automática.'));
+        closeModal();
+        // mostrar control flotante
+        if (musicControl) {
+          musicControl.classList.remove('hidden');
+          setTimeout(() => musicControl.classList.remove('opacity-0'), 100);
+        }
+        if (musicOnIcon) musicOnIcon.classList.remove('hidden');
+        if (musicOffIcon) musicOffIcon.classList.add('hidden');
+      });
     }
+
+    // Entrar sin música
+    if (noMusicBtn) {
+      noMusicBtn.addEventListener('click', closeModal);
+    }
+
+    // Control flotante toggle
+    if (musicToggle) {
+      musicToggle.addEventListener('click', () => {
+        if (music.paused) {
+          music.play().catch(() => console.warn('El navegador bloqueó la reproducción automática.'));
+          if (musicOnIcon) musicOnIcon.classList.remove('hidden');
+          if (musicOffIcon) musicOffIcon.classList.add('hidden');
+        } else {
+          music.pause();
+          if (musicOnIcon) musicOnIcon.classList.add('hidden');
+          if (musicOffIcon) musicOffIcon.classList.remove('hidden');
+        }
+      });
+    }
+});
