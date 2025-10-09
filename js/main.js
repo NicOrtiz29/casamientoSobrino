@@ -68,34 +68,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 3. Generador de Evento para Calendario (.ics)
+    // 3. Generador de Evento para Calendario (Google Calendar)
     const calendarButton = document.getElementById('add-to-calendar');
-    
-    function toICSDate(date) {
-        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    }
 
-    function generateICS(details) {
-        const icsContent = [
-            'BEGIN:VCALENDAR',
-            'VERSION:2.0',
-            'BEGIN:VEVENT',
-            `URL:${document.location.href}`,
-            `DTSTART:${toICSDate(details.startTime)}`,
-            `DTEND:${toICSDate(details.endTime)}`,
-            `SUMMARY:${details.title}`,
-            `DESCRIPTION:${details.description}`,
-            `LOCATION:${details.location}`,
-            'END:VEVENT',
-            'END:VCALENDAR'
-        ].join('\r\n');
+    function generateGoogleCalendarUrl(details) {
+        const formatDate = (date) => date.toISOString().replace(/-|:|\.\d+/g, '');
 
-        return `data:text/calendar;charset=utf-8,${encodeURIComponent(icsContent)}`;
+        const baseUrl = 'https://www.google.com/calendar/render?action=TEMPLATE';
+        const params = new URLSearchParams({
+            text: details.title,
+            dates: `${formatDate(details.startTime)}/${formatDate(details.endTime)}`,
+            details: details.description,
+            location: details.location,
+            ctz: 'America/Argentina/Buenos_Aires'
+        });
+        return `${baseUrl}&${params.toString()}`;
     }
 
     if (calendarButton) {
-        calendarButton.href = generateICS(eventDetails);
-        calendarButton.setAttribute('download', 'boda-jazmin-y-marcos.ics');
+        calendarButton.href = generateGoogleCalendarUrl(eventDetails);
     }
 
 });
