@@ -89,4 +89,64 @@ document.addEventListener('DOMContentLoaded', () => {
         calendarButton.href = generateGoogleCalendarUrl(eventDetails);
     }
 
-});
+    // 4. Background Music Modal & Control
+    const musicModal = document.getElementById('music-modal');
+    const modalContent = document.getElementById('modal-content');
+    const playMusicBtn = document.getElementById('play-music-btn');
+    const noMusicBtn = document.getElementById('no-music-btn');
+    const music = document.getElementById('background-music');
+    const musicControl = document.getElementById('music-control');
+    const musicToggle = document.getElementById('music-toggle');
+    const musicOnIcon = document.getElementById('music-on-icon');
+    const musicOffIcon = document.getElementById('music-off-icon');
+
+    // Function to show the modal with a fade-in/scale-up effect
+    const showModal = () => {
+        if (musicModal && modalContent) {
+            musicModal.classList.remove('opacity-0', 'pointer-events-none');
+            // A small delay to allow the display property to change before starting the transition
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+            }, 50);
+        }
+    };
+
+    // Function to hide the modal
+    const closeModal = () => {
+        if (musicModal && modalContent) {
+            modalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                musicModal.classList.add('opacity-0', 'pointer-events-none');
+            }, 300); // Match duration in CSS
+        }
+    };
+
+    if (musicModal) {
+        // Show the modal when the page is loaded
+        showModal();
+
+        playMusicBtn.addEventListener('click', () => {
+            music.play().catch(e => console.error("Error playing music:", e));
+            closeModal();
+            musicControl.classList.remove('hidden');
+            setTimeout(() => musicControl.classList.remove('opacity-0'), 50); // Fade in control
+            musicOnIcon.classList.remove('hidden');
+            musicOffIcon.classList.add('hidden');
+        });
+
+        noMusicBtn.addEventListener('click', () => {
+            closeModal();
+        });
+
+        musicToggle.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                musicOnIcon.classList.remove('hidden');
+                musicOffIcon.classList.add('hidden');
+            } else {
+                music.pause();
+                musicOnIcon.classList.add('hidden');
+                musicOffIcon.classList.remove('hidden');
+            }
+        });
+    }
