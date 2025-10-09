@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda - J & M</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #FDFBF5;
+            color: #333;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .leaf-divider {
+            width: 150px;
+            height: 50px;
+            margin: 3rem auto; /* Aumentado el margen */
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 max-w-2xl text-center">
+
+        <!-- Encabezado -->
+        <header class="my-16">
+            <h3 class="text-2xl tracking-widest text-emerald-800">NUESTRA BODA</h3>
+            <h1 class="text-7xl md:text-8xl my-4 text-emerald-900">Jazmín & Marcos</h1>
+            <p class="text-xl text-gray-600" id="wedding-date-string">14 de Febrero del 2026</p>
+        </header>
+
+        <!-- Cuenta Regresiva -->
+        <section id="countdown" class="my-20">
+            <div class="grid grid-cols-4 gap-4 max-w-md mx-auto">
+                <div class="p-4">
+                    <div id="days" class="text-5xl md:text-6xl font-serif text-emerald-800">0</div>
+                    <div class="text-sm text-gray-500">Días</div>
+                </div>
+                <div class="p-4">
+                    <div id="hours" class="text-5xl md:text-6xl font-serif text-emerald-800">0</div>
+                    <div class="text-sm text-gray-500">Horas</div>
+                </div>
+                <div class="p-4">
+                    <div id="minutes" class="text-5xl md:text-6xl font-serif text-emerald-800">0</div>
+                    <div class="text-sm text-gray-500">Minutos</div>
+                </div>
+                <div class="p-4">
+                    <div id="seconds" class="text-5xl md:text-6xl font-serif text-emerald-800">0</div>
+                    <div class="text-sm text-gray-500">Segundos</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Separador -->
+        <div class="leaf-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30" fill="#4a7c59"><path d="M 50,30 C 35,25 15,25 0,25 C 15,25 35,22 50,0 C 65,22 85,25 100,25 C 85,25 65,25 50,30 Z"></path></svg>
+        </div>
+
+        <!-- Foto Principal -->
+        <section class="my-20">
+            <div class="w-full aspect-[4/3] max-w-xl mx-auto rounded-lg shadow-xl overflow-hidden">
+                <img src="./img/1.jpeg" alt="Jazmín y Marcos" class="w-full h-full object-cover">
+            </div>
+        </section>
+
+        <!-- Nuestra Historia -->
+        <section class="my-20">
+            <h2 class="text-5xl font-serif text-emerald-900 mb-6">Nuestra Historia</h2>
+            <p class="max-w-xl mx-auto text-gray-600 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </section>
+
+        <!-- Separador -->
+        <div class="leaf-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30" fill="#4a7c59"><path d="M 50,30 C 35,25 15,25 0,25 C 15,25 35,22 50,0 C 65,22 85,25 100,25 C 85,25 65,25 50,30 Z"></path></svg>
+        </div>
+
+        <!-- Ceremonia y Fiesta con Itinerario -->
+        <section class="my-20">
+            <h2 class="text-5xl font-serif text-emerald-900 mb-6">Ceremonia y Fiesta</h2>
+            <p class="text-lg text-gray-600">Sábado, 14 de Febrero de 2026</p>
+            <p class="text-lg text-gray-600 mt-2 font-semibold">Teatro Colón, Cerrito 628, Buenos Aires</p>
+            
+            <div class="mt-8 border-t border-b border-emerald-200 max-w-md mx-auto py-4">
+                <h3 class="text-2xl font-serif text-emerald-800 mb-4">Itinerario</h3>
+                <ul class="text-gray-600">
+                    <li class="my-2">18:00 hs - Ceremonia</li>
+                    <li class="my-2">19:30 hs - Recepción & Cóctel</li>
+                    <li class="my-2">21:00 hs - Cena</li>
+                    <li class="my-2">23:00 hs - ¡A bailar!</li>
+                </ul>
+            </div>
+
+            <div class="flex justify-center gap-4 mt-8">
+                <a id="add-to-calendar" href="#" class="bg-emerald-700 text-white py-2 px-6 rounded-full hover:bg-emerald-800 transition">Agendar Evento</a>
+                <a id="how-to-get-there" href="https://www.google.com/maps/place/Teatro+Col%C3%B3n/@-34.6037389,-58.3841453,17z" target="_blank" class="border border-emerald-700 text-emerald-700 py-2 px-6 rounded-full hover:bg-emerald-50 transition">Cómo Llegar</a>
+            </div>
+        </section>
+
+        <!-- Galería de Momentos -->
+        <section class="my-20">
+            <h2 class="text-5xl font-serif text-emerald-900 mb-8">Galería de Momentos</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-xl mx-auto">
+                <div class="aspect-square rounded-lg shadow-lg overflow-hidden"><img src="./img/2.jpg" class="w-full h-full object-cover" alt="Foto 1"></div>
+                <div class="aspect-square rounded-lg shadow-lg overflow-hidden"><img src="./img/3.jpg" class="w-full h-full object-cover" alt="Foto 2"></div>
+                <div class="aspect-square rounded-lg shadow-lg overflow-hidden"><img src="./img/4.jpg" class="w-full h-full object-cover" alt="Foto 3"></div>
+                <div class="aspect-square rounded-lg shadow-lg overflow-hidden"><img src="./img/5.jpg" class="w-full h-full object-cover" alt="Foto 4"></div>
+                <div class="aspect-square rounded-lg shadow-lg overflow-hidden"><img src="./img/6.jpg" class="w-full h-full object-cover" alt="Foto 5"></div>
+                <div class="aspect-square rounded-lg shadow-lg overflow-hidden"><img src="./img/7.jpg" class="w-full h-full object-cover" alt="Foto 6"></div>
+            </div>
+        </section>
+
+        <!-- Separador -->
+        <div class="leaf-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30" fill="#4a7c59"><path d="M 50,30 C 35,25 15,25 0,25 C 15,25 35,22 50,0 C 65,22 85,25 100,25 C 85,25 65,25 50,30 Z"></path></svg>
+        </div>
+
+        <!-- Dress Code -->
+        <section class="my-20">
+            <h2 class="text-5xl font-serif text-emerald-900 mb-6">Código de Vestimenta</h2>
+            <p class="text-2xl font-serif text-emerald-800">Elegante</p>
+            <p class="max-w-md mx-auto text-gray-600 mt-2">La ocasión es especial, ¡nos encantaría que te vistas para celebrar con nosotros!</p>
+        </section>
+
+        <!-- Regalos -->
+        <section class="my-20">
+            <h2 class="text-5xl font-serif text-emerald-900 mb-6">Regalos</h2>
+            <p class="max-w-md mx-auto text-gray-600">El mejor regalo es que nos acompañes en este día. Pero si querés, podés ayudarnos con nuestra luna de miel.</p>
+            <div class="max-w-sm mx-auto bg-white/50 p-6 mt-6 rounded-lg shadow-md text-left">
+                <div class="mb-4">
+                    <label class="block text-gray-500 text-sm font-bold mb-2">CBU</label>
+                    <div class="flex">
+                        <input id="cbu-input" type="text" value="0000003100000012345678" readonly class="flex-grow p-2 border rounded-l-md bg-gray-100 text-sm">
+                        <button data-copy="cbu-input" class="copy-btn bg-emerald-700 text-white text-sm p-2 rounded-r-md hover:bg-emerald-800">Copiar</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-500 text-sm font-bold mb-2">Alias</label>
+                    <div class="flex">
+                        <input id="alias-input" type="text" value="JAZMIN.MARCOS.BODA" readonly class="flex-grow p-2 border rounded-l-md bg-gray-100 text-sm">
+                        <button data-copy="alias-input" class="copy-btn bg-emerald-700 text-white text-sm p-2 rounded-r-md hover:bg-emerald-800">Copiar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asistencia -->
+        <section class="my-20">
+            <h2 class="text-5xl font-serif text-emerald-900 mb-6">Asistencia</h2>
+            <p class="max-w-md mx-auto text-gray-600 mb-6">Por favor, confirmanos tu asistencia haciendo click acá abajo.</p>
+            <a href="https://wa.me/5491123456789?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Jazmín%20y%20Marcos" target="_blank" class="inline-block bg-emerald-700 text-white py-3 px-8 rounded-full hover:bg-emerald-800 transition transform hover:scale-105 shadow-lg">Confirmar por WhatsApp</a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="my-16">
+            <div class="leaf-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30" fill="#4a7c59"><path d="M 50,30 C 35,25 15,25 0,25 C 15,25 35,22 50,0 C 65,22 85,25 100,25 C 85,25 65,25 50,30 Z"></path></svg>
+            </div>
+            <h3 class="text-4xl font-serif text-emerald-800">¡Te esperamos!</h3>
+        </footer>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
