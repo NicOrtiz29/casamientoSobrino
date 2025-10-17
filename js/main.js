@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const eventDetails = {
         title: "Boda de Mile & Marian",
         description: "¡Te esperamos para celebrar nuestra boda!",
-        location: "Teatro Colón, Cerrito 628, Buenos Aires",
+        location: "Del Carmen 475, Cañuelas",
         startTime: weddingDate,
         // El evento dura 6 horas por defecto
         endTime: new Date(weddingDate.getTime() + 6 * 60 * 60 * 1000) 
