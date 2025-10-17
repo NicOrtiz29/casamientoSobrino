@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURACIÓN (Puedes cambiar esto) ---
-    const weddingDate = new Date(2025, 11, 20, 14, 0, 0); // Formato: AÑO, MES (0-11), DÍA, HORA, MINUTO, SEGUNDO
+    const weddingDate = new Date(2025, 10, 20, 14, 0, 0); // Formato: AÑO, MES (0-11), DÍA, HORA, MINUTO, SEGUNDO
     
     const eventDetails = {
         title: "Boda de Mile & Marian",
